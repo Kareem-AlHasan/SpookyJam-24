@@ -6,10 +6,19 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private float interactRange = 2f;
     public Lantern lantern;
+    public GameObject inventory = null;
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z) && inventory != null) {
+            if (inventory.activeInHierarchy) {
+                inventory.SetActive(false);
+            }
+            else {
+                inventory.SetActive(true);
+            }
+        }
 
-        if (Input.GetKeyDown(KeyCode.Q) && lantern.inHand)
+            if (Input.GetKeyDown(KeyCode.Q) && lantern.inHand)
         {
             lantern.Drop();
         }
